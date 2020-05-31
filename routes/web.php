@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/spaces', 'SpaceController@index');
-Route::get('/spaces/{space}', 'SpaceController@show');
+Route::middleware('auth')->group(function() {
+    Route::get('/spaces', 'SpaceController@index');
+    Route::get('/spaces/{space}', 'SpaceController@show');
+});
 
-Auth::routes();
+Route::get('/explore', 'ExploreController');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();

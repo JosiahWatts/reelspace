@@ -26,15 +26,13 @@
                 <h1 class="font-black pb-3 text-3xl ">
                     📽️ReelSpace
                 </h1>
-
                 <div>
                     @auth
                         <h2 class="text-lg font-bold mr-2">Hey, {{ auth()->user()->name }} 👋</h2>
                     @else
                         <a href="/login" class="text-lg font-bold mr-2">Login</a>
                         <a href="/register" class="text-lg font-bold">Register</a>
-                    @endauth
-                    
+                    @endauth 
                 </div>
             </header>
         </section>
