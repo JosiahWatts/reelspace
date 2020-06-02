@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function() {
-    Route::get('/spaces', 'SpaceController@index');
+Route::middleware('auth')->group(function () {
+    Route::get('/spaces', 'SpaceController@index')->name('spaces');
+    Route::post('/spaces', 'SpaceController@store');
+    Route::get('/spaces/create', 'SpaceController@create');
     Route::get('/spaces/{space}', 'SpaceController@show');
+    Route::post('/spaces/{space}/join', 'SpaceJoinController@store');
+    Route::post('/spaces/{space}/leave', 'SpaceJoinController@destroy');
 });
 
 Route::get('/explore', 'ExploreController');

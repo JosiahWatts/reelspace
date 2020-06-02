@@ -24,7 +24,7 @@
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto border-b border-b-gray-600 flex justify-between items-center">
                 <h1 class="font-black pb-3 text-3xl ">
-                    📽️ReelSpace
+                    📽️ ReelSpace
                 </h1>
                 <div>
                     @auth
