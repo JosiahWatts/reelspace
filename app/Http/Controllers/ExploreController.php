@@ -10,7 +10,9 @@ class ExploreController extends Controller
     public function __invoke()
     {
         return view('explore', [
-            'spaces' => Space::paginate(25)
-        ]);    
+            'spaces' => Space::query()
+                ->orderBy('name')
+                ->paginate(25)
+        ]);
     }
 }

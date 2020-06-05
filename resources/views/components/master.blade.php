@@ -22,10 +22,22 @@
 <body>
     <div id="app">
         <section class="px-8 py-4 mb-6">
-            <header class="container mx-auto border-b border-b-gray-600 flex justify-between items-center">
-                <h1 class="font-black pb-3 text-3xl ">
-                    📽️ ReelSpace
-                </h1>
+            <header class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <h1 class="font-black pb-3 text-3xl ">
+                        📽️ ReelSpace
+                    </h1>
+                    <div class="ml-8 text-md font-bold mb-2">
+                        <ul class="flex items-center">
+                            <li class="px-2">
+                                <a href="/explore">Explore Spaces</a>
+                            </li>
+                            <li class="px-2">
+                                <a href="/spaces">My Spaces</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div>
                     @auth
                         <h2 class="text-lg font-bold mr-2">Hey, {{ auth()->user()->name }} 👋</h2>

@@ -25,6 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/spaces/{space}', 'SpaceController@show');
     Route::post('/spaces/{space}/join', 'SpaceJoinController@store');
     Route::post('/spaces/{space}/leave', 'SpaceJoinController@destroy');
+
+    Route::get('/movies', 'MovieController@index');
+    Route::get('/movies/{id}', 'MovieController@show');
+
+    Route::post('/space/{space}/movies/{id}', 'SpaceMovieController@store');
 });
 
 Route::get('/explore', 'ExploreController');

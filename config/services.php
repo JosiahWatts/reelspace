@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tmdb' => [
+        'key' => env('TMDB_ACCESS_KEY'),
+        'endpoint' => env('TMDB_ENDPOINT', 'https://api.themoviedb.org/3/'),
+    ],
 ];

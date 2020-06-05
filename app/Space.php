@@ -19,4 +19,9 @@ class Space extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class, 'movie_space_user', 'space_id', 'movie_id');
+    }
 }
