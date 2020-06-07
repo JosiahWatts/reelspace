@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -51,5 +53,7 @@
 
         {{ $slot }}
     </div>
+    
+    @livewireScripts
 </body>
 </html>

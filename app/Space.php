@@ -24,4 +24,7 @@ class Space extends Model
     {
         return $this->belongsToMany(Movie::class, 'movie_space_user', 'space_id', 'movie_id');
     }
+
+    // Activity Feed
+    // public function activity() {}
 }
