@@ -1,3 +1,3 @@
 <x-space-layout :space="$space">
-    <p>This will contain whatever information we need</p>
+    <h1>Activity</h1>
 </x-space-layout>

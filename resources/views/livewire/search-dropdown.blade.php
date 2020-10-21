@@ -32,7 +32,8 @@
                         <div class="relative flex-grow">
                             <span>
                                 <input type="text"
-                                        wire:model="searchQuery" 
+                                        wire:model="searchQuery"
+                                        wire:keydown.enter="onSearchInputSearch()" 
                                         id="search-input"
                                         class="border border-gray-400 rounded-md py-1 pl-10 w-full"
                                         placeholder="Find A Movie (Press '/' to focus)"
@@ -48,7 +49,10 @@
                     <hr class="my-4">
                     <div class="mt-2">
                         @forelse ($movies as $movie)
-                            <p>{{ $movie['title'] }}</p>
+                            <div class="flex justify-between items-center">
+                                <p>{{ $movie['title'] }}</p>
+                                <button wire:click="storeMovie({{$movie['id']}})" class="border border-gray-500">Add</button>
+                            </div>
                         @empty
                             <p>No Results Found</p>
                         @endforelse

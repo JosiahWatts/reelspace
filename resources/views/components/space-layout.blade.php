@@ -1,12 +1,61 @@
 <x-app>
-        <header>
+    <div class="flex">
+        <div class="flex-grow bg-white border rounded-lg overflow-hidden p-8 mr-4">
+            {{ $slot }}
+        </div>
+
+        <aside>
+            <div class="bg-white border rounded-lg overflow-hidden p-6"
+                 style="max-width: 350px; min-width: 350px;">
+                <p class="mb-3">
+                    <span class="block uppercase tracking-wide font-bold text-xs text-gray-500">Space</span>
+                    <span>{{ $space->name }}</span>
+                </p>
+                <p class="mb-3">
+                    <span class="block uppercase tracking-wide font-bold text-xs text-gray-500">About</span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, cupiditate. Veritatis rerum exercitationem laborum molestiae iusto accusantium sequi possimus, doloremque non soluta fuga, dignissimos expedita natus? Fugit nisi iste dolorum.
+                </p>
+                <p class="mb-3">
+                    <span class="block uppercase tracking-wide font-bold text-xs text-gray-500">Owner</span>
+                    <span>{{ $space->owner->name }}</span>
+                </p>
+                
+                @if (!$space->hasMember(auth()->user()))
+                    <form action="/spaces/{{ $space->id }}/join" method="POST">
+                        @csrf
+                        <button class="border rounded-lg mt-3 py-1 px-4 bg-green-400 hover:bg-green-300 w-full">Join Space</button>
+                    </form>  
+                @else
+                    <form action="/spaces/{{ $space->id }}/leave" method="POST">
+                        @csrf
+                        <button class="border rounded-lg mt-3 py-1 px-4 bg-green-400 hover:bg-green-300 w-full">Leave Space</button>
+                    </form>
+                @endif
+            
+            </div>
+
+            <div class="bg-white border rounded-lg overflow-hidden p-6 mt-3"
+                 style="max-width: 600px;">
+                 <span class="block uppercase tracking-wide font-bold text-xs text-gray-500">Members ({{ $space->members->count() }})</span>
+                 <ul>
+                    @foreach ($space->members as $member)
+                    <li class="py-1">
+                       {{ $member->name }}
+                    </li>
+                   @endforeach
+                 </ul>
+            </div>
+        </aside>
+    </div>
+
+        {{-- <header>
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <h1 class="text-2xl font-bold">{{ $space->name }}</h1>
                     <span class="ml-4 rounded-full bg-green-400 uppercase px-2 py-1 text-xs font-bold mr-3">Public</span>
                 </div>                
                 
-                <livewire:search-dropdown />
+                <livewire:search-dropdown :space="$space" />
 
             </div>
             <hr class="my-4">
@@ -17,7 +66,7 @@
                             <a href="#">Activity Feed</a>
                         </li>
                         <li class="pr-4">
-                            <a href="#">Watch List</a>
+                            <a href="/spaces/{{ $space->id }}/movies">Watch List</a>
                         </li>
                         <li class="pr-4">
                             <a href="#">Settings</a>
@@ -37,7 +86,7 @@
     
         <div class="mt-8">
             {{ $slot }}
-        </div>
+        </div> --}}
     
                     {{-- <aside>
                         <h2 class="text-xl font-bold">Members ({{ $space->members->count() }})</h2>
@@ -48,18 +97,6 @@
                                 <li>There are no members.</li>
                             @endforelse
                         </ul>
-            
-                        @if (!$space->hasMember(auth()->user()))
-                            <form action="/spaces/{{ $space->id }}/join" method="POST">
-                                @csrf
-                                <button type="submit" class="mt-4 border rounded-lg py-2 px-4 bg-green-400 hover:bg-green-300">Join This Space</button>
-                            </form>  
-                        @else
-                            <form action="/spaces/{{ $space->id }}/leave" method="POST">
-                                @csrf
-                                <button type="submit" class="mt-4 border rounded-lg py-2 px-4 bg-green-400 hover:bg-green-300">Leave This Space</button>
-                            </form>
-                        @endif
             
                     </aside> --}}
     

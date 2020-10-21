@@ -25,6 +25,13 @@ class Space extends Model
         return $this->belongsToMany(Movie::class, 'movie_space_user', 'space_id', 'movie_id');
     }
 
-    // Activity Feed
-    // public function activity() {}
+    public function addMovie(Movie $movie)
+    {
+        return $this->movies()->save($movie, ['user_id' => auth()->user()->id]);
+    }
+
+    public function removeMovie(Movie $movie)
+    {
+        return $this->movies()->detach($movie);
+    }
 }

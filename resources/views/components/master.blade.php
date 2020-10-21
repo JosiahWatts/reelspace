@@ -21,15 +21,15 @@
     
     @livewireStyles
 </head>
-<body>
+<body class="bg-gray-200 text-gray-800">
     <div id="app">
-        <section class="px-8 py-4 mb-6">
+        <section class="px-8 py-2 mb-4 bg-white border-b">
             <header class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center">
-                    <h1 class="font-black pb-3 text-3xl ">
+                    <h1 class="font-black text-3xl text-green-600">
                         📽️ ReelSpace
                     </h1>
-                    <div class="ml-8 text-md font-bold mb-2">
+                    <div class="ml-8 text-md font-bold">
                         <ul class="flex items-center">
                             <li class="px-2">
                                 <a href="/explore">Explore Spaces</a>

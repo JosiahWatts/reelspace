@@ -18,7 +18,6 @@ class Movie extends Model
         return $this->belongsToMany(User::class, 'movie_space_user', 'user_id');
     }
 
-
-    // RemoveFromSpace - Remove from space
-    // AddToSpace - Add to Space
+    // TODO: Add Relationship to Spaces (Add to Space/Remove from Space)
+    // See Space Model
 }

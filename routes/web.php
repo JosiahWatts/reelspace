@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SpaceController;
+use App\Http\Controllers\SpaceMovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/movies', 'MovieController@index');
     Route::get('/movies/{id}', 'MovieController@show');
 
-    Route::post('/space/{space}/movies/{id}', 'SpaceMovieController@store');
+    Route::get('/spaces/{space}/movies', 'SpaceMovieController@index');
+    Route::get('/spaces/{space}/movies/{id}', 'SpaceMovieController@show');
+    //Route::post('/space/{space}/movies/{id}', 'SpaceMovieController@store');
 });
 
 Route::get('/explore', 'ExploreController');

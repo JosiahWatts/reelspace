@@ -5,11 +5,18 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 
+
 class SearchDropdown extends Component
 {
+    public $space;
     public $displaySearchModal = false;
     public $searchQuery;
     public $movies = [];
+
+    public function mount(\App\Space $space)
+    {
+        $this->space = $space;
+    }
 
     public function render()
     {
@@ -27,18 +34,19 @@ class SearchDropdown extends Component
 
     public function onSearchInputSearch()
     {
-        $this->movies = Http::withToken(config('services.tmdb.key'))
-            ->get('https://api.themoviedb.org/3/search/movie?query=' . $this->searchQuery)
-            ->json()['results'];
+        if ($this->searchQuery !== '') {
+            $this->movies = Http::withToken(config('services.tmdb.key'))
+                ->get('https://api.themoviedb.org/3/search/movie?query=' . $this->searchQuery)
+                ->json()['results'];
+        }
     }
 
-    // public function onSearchInputSearch()
-    // {
-    //     $this->getMovies()
-    // }
+    public function storeMovie(Int $imdbId)
+    {
+        $movie = \App\Movie::create([
+            'tmdb_id' => $imdbId
+        ]);
 
-    // private function getMovies(searchQuery)
-    // {
-    //     //
-    // }
+        $this->space->addMovie($movie);
+    }
 }
