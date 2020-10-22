@@ -19,6 +19,9 @@ class CreateShootoutsTable extends Migration
             $table->text('description');
             $table->foreignId('space_id');
             $table->foreignId('user_id');
+            $table->date('close_date');
+            $table->boolean('active');
+            $table->winner('tmdb_id')->nullable();
             $table->timestamps();
         });
     }
